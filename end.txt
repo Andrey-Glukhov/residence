@@ -1,0 +1,7 @@
+<div class="pic_wrapper"></div>
+
+
+<script src="residence.js"></script>
+
+</body>
+</html>
