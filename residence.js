@@ -1,47 +1,49 @@
-let numPic = 5;
-const matrix = [
-    [0, 0, 75, 75],
-    [0, 0, 50, 50],
-    [0, 0, 25, 25],
-    [25, 0, 50, 75],
-    [25, 0, 25, 50],
-    [25, 0, 0, 25],
-    [50, 0, 25, 75],
-    [50, 0, 0, 50],
-    [75, 0, 0, 75],
-    [0, 25, 75, 50],
-    [0, 25, 50, 25],
-    [0, 25, 25, 0],
-    [25, 25, 50, 50],
-    [25, 25, 25, 25],
-    [25, 25, 0, 0],
-    [50, 25, 25, 50],
-    [50, 25, 0, 25],
-    [0, 50, 75, 25],
-    [0, 50, 50, 0],
-    [25, 50, 50, 25],
-    [25, 50, 25, 0],
-    [75, 50, 0, 25],
-    [0, 75, 75, 0],
-    [25, 75, 50, 0],
-    [50, 75, 25, 0],
-    [75, 75, 0, 0]
-];
+let numPic = 8;
+// const matrix = [
+//     [0, 0, 75, 75],
+//     [0, 0, 50, 50],
+//     [0, 0, 25, 25],
+//     [25, 0, 50, 75],
+//     [25, 0, 25, 50],
+//     [25, 0, 0, 25],
+//     [50, 0, 25, 75],
+//     [50, 0, 0, 50],
+//     [75, 0, 0, 75],
+//     [0, 25, 75, 50],
+//     [0, 25, 50, 25],
+//     [0, 25, 25, 0],
+//     [25, 25, 50, 50],
+//     [25, 25, 25, 25],
+//     [25, 25, 0, 0],
+//     [50, 25, 25, 50],
+//     [50, 25, 0, 25],
+//     [0, 50, 75, 25],
+//     [0, 50, 50, 0],
+//     [25, 50, 50, 25],
+//     [25, 50, 25, 0],
+//     [75, 50, 0, 25],
+//     [0, 75, 75, 0],
+//     [25, 75, 50, 0],
+//     [50, 75, 25, 0],
+//     [75, 75, 0, 0]
+// ];
 let currentPic = 0;
 let currentVid = 0;
 const imageArray = [];
 const videoArray = [];
+var lastScrollTop = 0;
+const SAFETY_MARGIN = 150;
 
 document.addEventListener("DOMContentLoaded", function () {
     const imageList = document.querySelectorAll('.image_item');
-    
+
     Array.from(imageList, item => {
         imageArray.push(item.dataset.link);
     });
     shuffle(imageArray);
 
     const videoList = document.querySelectorAll('.video_item');
-    
+
     Array.from(videoList, item => {
         videoArray.push(item.dataset.link);
     });
@@ -51,21 +53,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const picWrapper = document.querySelector('.pic_wrapper');
     if (picWrapper) {
         for (let ind = 0; ind < numPic; ind++) {
-            createElement(ind);
+            const newDiv = createElement(ind);
+            picWrapper.append(newDiv);
+
         }
-    //setInterval(changePicture, 2000);    
+        //setInterval(changePicture, 2000);    
     }
-    
-     const media = document.querySelector('video');
-    // const mediaWrapper = document.querySelector('.video_wrapper');
-    // setPosition(mediaWrapper);
+
+    const media = document.querySelector('video');
     media.play();
     media.addEventListener('ended', () => {
-        //setPosition(mediaWrapper);
         document.querySelector('.video_wrapper').style.display = 'none';
         setTimeout(() => {
             currentVid++;
-            if (currentVid > videoArray.length -1) {
+            if (currentVid > videoArray.length - 1) {
                 currentVid = 0;
             }
             const sourceVid = document.querySelector('.video_wrapper video');
@@ -74,44 +75,62 @@ document.addEventListener("DOMContentLoaded", function () {
             media.load();
             media.play();
         }, 1500);
-        //media.play();
     });
-    // $('#listpic').endless({
 
-    //     direction:'vertical', //Direction : up (infinite top scrolling), down (infinite bottom scrolling), vertical (infinite top and bottom scrolling)
-        
-    //     scrollbar:'enable', //Enable or disable the scrollbar
-        
-    //     prepend:function(){alert("there isn't the boundary at the top");}, //Running when content is prepended
-        
-    //     append:function(){alert("there isn't the boundary at the bottom");}, //Running when content is appended
-        
-    //     n_prepend:function(){alert("you are now at the top");}, //Running when content in duplicate is removed and that you come from the top
-        
-    //     n_append:function(){alert("you are now at the bottom");} //Running when content in duplicate is removed and that you come from the bottom
-        
-    //     });
+    window.addEventListener('scroll', function() {
+        console.log('wi scroll');
+      })
 
-    // $('.image_list').infiniteScroll({
-    //     // options
-    //     path: '.pagination__next',
-    //     append: '.image_item',
-    //     history: false,
-    //   });
-    //$('#listpic').jscroll();
+    const div = document.getElementById("pictures");
 
-    const div = document.getElementById( "pictures" );
-   
-    div.addEventListener( "scroll", function() {
-        //var wrapper = document.querySelector('.pic_wrapper');
-      const max_scroll = this.scrollHeight - this.clientHeight;
-      const current_scroll = this.scrollTop;
-      const bottom = 100;
-      if ( current_scroll + bottom >= max_scroll ) {
-      
-        changePicture();
-      }
-    } );
+    div.addEventListener("scroll", function () {
+        var wrapper = document.querySelector('.pic_wrapper');
+        //const st = window.pageYOffset || document.documentElement.scrollTop;
+        const max_scroll = this.scrollHeight - this.clientHeight;
+        const st = this.scrollTop;
+        const bottom = 100;
+        if (st > lastScrollTop) {           
+            if (st + bottom >= max_scroll) {
+
+                appendPicture();
+            }
+        } else if (st < lastScrollTop) {
+            if (st -bottom <= 0) {
+                prependPicture();
+            }
+        }
+        lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+
+    //     scrollPos = $(this).scrollTop(),
+    //     docHeight = $(document.body).height(),
+    //     winHeight = $(window).height(),
+    //     lowerLimit = SAFETY_MARGIN,
+    //     higherLimit = docHeight - SAFETY_MARGIN;
+
+    //      // Scrolling too high
+    // if( scrollPos <= lowerLimit ){
+
+    //     // Move content to top;
+    //     //$(lastDiv).prependTo(document.body);
+    //     prependPicture();
+    //     // Adjust scroll position to compensate
+    //     // for the new content at the top
+    //     //$(window).scrollTop(scrollPos + $(lastDiv).height());
+
+    // }
+
+    // // Scrolling too low
+    // else if( scrollPos + winHeight >= higherLimit ){
+
+    //     // Move content to bottom
+    //     //$(firstDiv).appendTo(document.body);
+    //     appendPicture();
+    //     // Adjust scroll position to compensate
+    //     // for the missing content at the top
+    //    // $(window).scrollTop(scrollPos - $(firstDiv).height());
+    // } 
+
+    });
 
 });
 
@@ -128,35 +147,50 @@ function shuffle(array) {
     }
 }
 
-function changePicture() {
+function appendPicture() {
     const picElement = document.querySelector('.image_element');
     const picWrapper = document.querySelector('.pic_wrapper');
     picElement.remove();
-    if (currentPic+1 > imageArray.length-1) {
+    if (currentPic + 1 > imageArray.length - 1) {
         currentPic = 0
-    }    
-    createElement(currentPic);
-   
+    }
+    const newDiv = createElement(currentPic);
+    picWrapper.append(newDiv);
+    currentPic += 1;
 
 }
 
-function createElement( ind) {
+function prependPicture() {
+    const picElement = document.querySelector('.image_element:last-child');
+    const picWrapper = document.querySelector('.pic_wrapper');
+    picElement.remove();
+    if (currentPic - 1 < 0) {
+        currentPic = imageArray.length-1;
+    }
+    const newDiv = createElement(currentPic);
+    picWrapper.prepend(newDiv);
+    currentPic -= 1;
+
+}
+
+function createElement(ind) {
     const picWrapper = document.querySelector('.pic_wrapper');
     let div = document.createElement('div');
     div.className = "image_element";
     div.style.backgroundImage = "url(" + imageArray[ind] + ")";
     div.style.position = "relative";
     setPosition(div);
-    
-    currentPic = ind+1;
-    picWrapper.append(div);
+    return div;
+    //currentPic = ind+1;
+    // picWrapper.append(div);
 
 }
+
 function setPosition(element) {
-    const position = matrix[getRandomInt(0, matrix.length)];
+    //const position = matrix[getRandomInt(0, matrix.length)];
     const newWidth = getRandomInt(30, 80);
     element.style.width = newWidth + "%";
-    element.style.height = (newWidth * 9 /16) + "%";
-    element.style.left = getRandomInt(0, 100 -newWidth) + "%";
-    
+    element.style.height = (newWidth * 9 / 16) + "%";
+    element.style.left = getRandomInt(0, 100 - newWidth) + "%";
+
 }
