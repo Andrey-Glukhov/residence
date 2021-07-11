@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<div class="image_list">
+<div class="image_list" id="listpic">
     <div class="image_item" data-link="./img/DSC01097resized.jpg"></div>
     <div class="image_item" data-link="./img/DSC01104resized.jpg"></div>
     <div class="image_item" data-link="./img/DSC01107resized.jpg"></div>
@@ -25,14 +25,23 @@
     <div class="image_item" data-link="./img/DSC01119resized.jpg"></div>
     <div class="image_item" data-link="./img/DSC01120resized.jpg"></div>
 </div>
-<div class="pic_wrapper"></div>
+<div class="video_list">
+    <div class="video_item" data-link="./video/VID_20160731_080140.mp4"></div>
+    <div class="video_item" data-link="./video/VID_20160708_072200.mp4"></div>
+</div>
+
+<div class="pic_frame" id="pictures">
+<div class="pic_wrapper">
+
+</div>
+</div>
+
 <div class="video_wrapper">
-    <video muted>
-    <source src="video/VID_20160731_080140.mp4" type="video/mp4">
+    <video muted src="video/VID_20160731_080140.mp4" type="video/mp4">
 
   </video>
 </div>
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <script src="residence.js"></script>
 
