@@ -7,15 +7,20 @@
     overflow-y: scroll;
     padding: 0 40px;
 }
-.pic_wrapper {
+/* .pic_wrapper {
     height: 100%;
-}
+} */
 /* div.pic_frame::-webkit-scrollbar {
     display: none;
 } */
 .image_element {
     background-size: contain;
     background-repeat: no-repeat;
+}
+.image_element > * {
+    height: 100%;
+    width: auto;
+    transform-origin: center;"
 }
 .video_wrapper {
     position: fixed;
