@@ -54,6 +54,7 @@ jQuery(document).ready(function ($) {
         if ($(videoElement).hasClass('active')) {
             $(videoElement).removeAttr('controls')
             $(videoElement).attr('muted', '');
+            videoElement.muted = 1;
             $(videoElement).removeClass('active');
         } else {
             $(videoElement).removeAttr('muted')
