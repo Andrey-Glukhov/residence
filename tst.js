@@ -24,8 +24,8 @@ jQuery(document).ready(function ($) {
             createElement('up', true);
             scene_up.update();
             
-        })
-        .addIndicators();
+        });
+        //.addIndicators();
 
     var scene_down = new ScrollMagic.Scene({
             triggerElement: "#loader_down",
@@ -36,8 +36,8 @@ jQuery(document).ready(function ($) {
             createElement('down', true);
             scene_down.update();
             
-        })
-        .addIndicators();
+        });
+        //.addIndicators();
 
     // add some boxes to start with.
     addBoxes(8);
@@ -156,14 +156,18 @@ jQuery(document).ready(function ($) {
         } else {
             if (element.find('img').attr('data-width') > 0) {
                 aspectRatio = element.find('img').attr('data-height') / element.find('img').attr('data-width');
-                if (aspectRatio > 1) {
+                if (aspectRatio < 1) {
                     element.css('width', newWidth + "%");
                     //element.css('height', (newWidth / aspectRatio) + "%");
                     element.css('height', "auto");
+                    element.find('img').css('width', '100%');
+                    element.find('img').css('height', 'auto');
                 } else {
                     element.css('height', newWidth + "%");
                     //element.css('width', (newWidth * aspectRatio) + "%");
                     element.css('width', "auto");
+                    element.find('img').css('height', '100%');
+                    element.find('img').css('width', 'auto');
                 }
 
             }

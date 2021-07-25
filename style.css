@@ -27,7 +27,7 @@ body {
 }
 .image_element > * {
     height: 100%;
-    width: auto;
+    width: 100%;
     transform-origin: center;
 }
 .video_wrapper {
