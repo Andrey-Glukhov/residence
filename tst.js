@@ -16,7 +16,7 @@ jQuery(document).ready(function ($) {
     var scene_up = new ScrollMagic.Scene({
             triggerElement: "#loader_up",
             triggerHook: 0,
-            offset: "50px",
+            offset: "30px",
             reverse: true
         })
         .addTo(controller)
@@ -24,8 +24,8 @@ jQuery(document).ready(function ($) {
             createElement('up', true);
             scene_up.update();
             
-        });
-        //.addIndicators();
+        })
+        .addIndicators();
 
     var scene_down = new ScrollMagic.Scene({
             triggerElement: "#loader_down",
@@ -36,8 +36,8 @@ jQuery(document).ready(function ($) {
             createElement('down', true);
             scene_down.update();
             
-        });
-        //.addIndicators();
+        })
+        .addIndicators();
 
     // add some boxes to start with.
     addBoxes(8);

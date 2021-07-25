@@ -26,9 +26,14 @@ body {
     margin-top: 50px;
 }
 .image_element > * {
+    /* height: 100%;
+    width: 100%; */
+    transform-origin: center;
+}
+.image_element > video {
     height: 100%;
     width: 100%;
-    transform-origin: center;
+    
 }
 .video_wrapper {
     position: fixed;
@@ -59,4 +64,8 @@ body {
 
 #loader_up img, #loader_down img {
 	vertical-align: text-bottom;
+}
+
+.aboun_button , .about_block {
+    position: fixed;
 }
