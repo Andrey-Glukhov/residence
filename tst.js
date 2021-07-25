@@ -42,11 +42,11 @@ jQuery(document).ready(function ($) {
 
     // add some boxes to start with.
     addBoxes(8);
-    $('#pictures').on('scroll', function() {
-        if ($('#pictures').scrollTop() == 0) {
-            $('#pictures').scrollTop(50);
-        }
-    });
+    // $('#pictures').on('scroll', function() {
+    //     if ($('#pictures').scrollTop() == 0) {
+    //         $('#pictures').scrollTop(50);
+    //     }
+    // });
 
     $('#pictures').on('click', '.image_element > video', function(e) {
         console.log(e.target);
