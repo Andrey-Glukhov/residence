@@ -13,19 +13,19 @@ jQuery(document).ready(function ($) {
     shuffle(imageArray);
 
     // build scene
-    var scene_up = new ScrollMagic.Scene({
-            triggerElement: "#loader_up",
-            triggerHook: 0,
-            offset: "30px",
-            reverse: true
-        })
-        .addTo(controller)
-        .on("leave", function (e) {
-            createElement('up', true);
-            scene_up.update();
+    // var scene_up = new ScrollMagic.Scene({
+    //         triggerElement: "#loader_up",
+    //         triggerHook: 0,
+    //         offset: "30px",
+    //         reverse: true
+    //     })
+    //     .addTo(controller)
+    //     .on("leave", function (e) {
+    //         createElement('up', true);
+    //         scene_up.update();
             
-        })
-        .addIndicators();
+    //     })
+    //     .addIndicators();
 
     var scene_down = new ScrollMagic.Scene({
             triggerElement: "#loader_down",
@@ -37,8 +37,8 @@ jQuery(document).ready(function ($) {
             createElement('down', true);
             scene_down.update();
             
-        })
-        .addIndicators();
+        });
+        //.addIndicators();
 
     // add some boxes to start with.
     addBoxes(8);
