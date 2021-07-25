@@ -50,7 +50,21 @@ jQuery(document).ready(function ($) {
 
     $('#pictures').on('click', '.image_element > video', function(e) {
         console.log(e.target);
-        $(e.target).toggleClass('active');
+        var videoElement = e.target;
+        if ($(videoElement).hasClass('active')) {
+            $(videoElement).removeAttr('controls')
+            $(videoElement).attr('muted', '');
+            $(videoElement).removeClass('active');
+        } else {
+            $(videoElement).removeAttr('muted')
+            $(videoElement).attr('controls', '');
+            $(videoElement).addClass('active');
+            videoElement.pause();
+            videoElement.currentTime = 0;
+            videoElement.muted = 0;
+            videoElement.load();
+        }
+
     });
 
     //$(document).on('load', 'img', newPosition);
