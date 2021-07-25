@@ -1,3 +1,7 @@
+body {
+    overflow: hidden;
+}
+
 .pic_frame {
     position: fixed;
     top: 0;
@@ -6,6 +10,9 @@
     right: 0;
     overflow-y: scroll;
     padding: 0 40px;
+    background-image: url(img/sketch-0a1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 /* .pic_wrapper {
     height: 100%;
@@ -16,11 +23,12 @@
 .image_element {
     background-size: contain;
     background-repeat: no-repeat;
+    margin-top: 50px;
 }
 .image_element > * {
     height: 100%;
     width: auto;
-    transform-origin: center;"
+    transform-origin: center;
 }
 .video_wrapper {
     position: fixed;
@@ -37,3 +45,18 @@
 .image_list .video_list {
     display: none;
 } 
+#loader_up, #loader_down {
+    height: 0;
+    overflow: hidden;
+    line-height: 60px;
+}
+
+#loader_up.active, #loader_down.active {
+    height: 60px;
+}    
+
+
+
+#loader_up img, #loader_down img {
+	vertical-align: text-bottom;
+}
