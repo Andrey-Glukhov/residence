@@ -48,6 +48,11 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    $('#pictures').on('click', '.image_element > video', function(e) {
+        console.log(e.target);
+        $(e.target).toggleClass('active');
+    });
+
     //$(document).on('load', 'img', newPosition);
     //$('.image_element').on('load', 'img', newPosition );
     // document.addEventListener('load',function(e){
