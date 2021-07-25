@@ -29,7 +29,8 @@ jQuery(document).ready(function ($) {
 
     var scene_down = new ScrollMagic.Scene({
             triggerElement: "#loader_down",
-            triggerHook: "onEnter"
+            triggerHook: "onEnter",
+            offset: "-30px",
         })
         .addTo(controller)
         .on("enter", function (e) {
