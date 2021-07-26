@@ -5,12 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     
     <title>Document</title>
 </head>
 <body>
-    <!-- <div class="aboun_button">ABOUT</div>
-    <div class="about_block"></div> -->
+    <div class="top-navigation"></div>
+
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="aboun_button"><p>ABOUT</p></div>
+        <div class="close_button"><p>CLOSE</p></div>
+    </label>
+      
+     <div id="sidebarMenu" class="about_block">
+         <div class="innerSidebar">
+             <h1>“Space Habitat Residency”</h1>
+         <p>Jelsa Art Biennial (JAB) 2021 in collaboration with the Moon Gallery Foundation 
+             and the “Magic Carpets” platform invites you to apply for the “Space Habitat Residency” 
+             - the residency for emerging artists who would like to explore the theme of space exploration through art. 
+        </p>
+        <p>The 2021 biennial program coincides with Saturn's oppositions with Venus, Mars, and the Sun. 
+            The year theme and the biennial concept is Saturn at Opposition: the apparent acceleration of 
+            time as opposed to its slowing down, the processes of decay opposed to the process of construction, 
+            transience, and mortality, intergenerational relations, and the eternal scattering of matter and time 
+            into entropy in contrast with the impossibility of disintegration in the midst of the ecological crisis that marks the age in which we live. 
+        </p>
+        <p>“Space Habitat Residency” is organised in partnership with the Moon Gallery Foundation - the cultural platform that enables 
+            interdisciplinary and international cooperation and knowledge exchange between creative/artistic sectors on the one hand and 
+            space/technology sectors on the other. Moon Gallery develops the first permanent extraterrestrial art gallery, in the form of an 
+            installation of 100 works by international artists, set to land on the moon as early as 2025. Getting to the Moon is hard. 
+            Each kilo of mass massively increases the complexity and cost of getting there. For this reason, a narrow artistic constraint is imposed: 
+            each Moon Gallery artifact fits within just one cubic centimeter. 100 artworks will be integrated into a 10 by 10 grid tray. These micro, 
+            highly concentrated ideas – seeds of future culture ─ will contribute to the establishment of the first lunar outpost.  
+         </p>
+         </div>
+     </div> 
+
+
 <div class="templates">
     <div class="image_element picture_element"><img></div>
     <div class="image_element video_element" ><video autoplay loop muted type="video/mp4"></video></div>
@@ -46,11 +80,11 @@
      
     <div class="pic_frame" id="pictures">
         <div id="loader_up">
-            <img src="img/example_loading.gif">
+            <img src="img/example_loading.png">
             LOADING...
         </div>
         <div id="loader_down">
-            <img src="img/example_loading.gif">
+            <img src="img/example_loading.png">
             LOADING...
         </div>
     </div>

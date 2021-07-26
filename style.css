@@ -10,7 +10,7 @@ body {
     right: 0;
     overflow-y: scroll;
     padding: 0 40px;
-    background-image: url(img/sketch-0a1.png);
+    background-image: url(img/back-01.png);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -77,6 +77,86 @@ body {
 	vertical-align: text-bottom;
 }
 
-.aboun_button , .about_block {
+.aboun_button p{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: #fbb67b;
+    font-size: 1.3rem;
+    margin: 0;
+}
+.aboun_button{
+display: block;
+}
+
+.close_button{
+    display: none;
+}
+.close_button p{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin: 0;
+ }
+.top-navigation{
+    margin: 15px 20px;
+    display: block;
+    width: 160px;
+    height: 90px;
+    box-shadow: none;
     position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-image: url(img/logo_jab-05.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+#sidebarMenu {
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 50vw;
+    transform: translateX(50vw);
+    transition: transform 500ms ease-in-out;
+    background: #fbb67b;
+    z-index: 100;
+    overflow: hidden;
+}
+.sidebarIconToggle{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 101;
+}
+.innerSidebar{
+    overflow: scroll;
+    color: #ffffff;
+    margin: 50px 30px;
+    height: 90vh;
+}
+.innerSidebar h1, p{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+input[type="checkbox"]:checked ~ .sidebarIconToggle>.aboun_button {
+   display: none;
+}
+input[type="checkbox"]:checked ~ .sidebarIconToggle>.close_button {
+    display: block;
+ }
+input[type="checkbox"]:checked ~ #sidebarMenu {
+    transform: translateX(0);
+}
+
+input[type=checkbox] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+    position: relative;
+    z-index: 100;
 }
