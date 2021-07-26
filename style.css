@@ -57,6 +57,7 @@ body {
 .video_wrapper video {
     width: 100%;
     height: auto;
+    cursor: pointer;
 }
 .image_list .video_list {
     display: none;
@@ -83,13 +84,16 @@ body {
     color: #fbb67b;
     font-size: 1.3rem;
     margin: 0;
+    
 }
 .aboun_button{
 display: block;
+cursor: pointer;
 }
 
 .close_button{
     display: none;
+    cursor: pointer;
 }
 .close_button p{
     font-family: 'Open Sans', sans-serif;
@@ -132,7 +136,8 @@ display: block;
     z-index: 101;
 }
 .innerSidebar{
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: auto;
     color: #ffffff;
     margin: 50px 30px;
     height: 90vh;
@@ -159,4 +164,10 @@ input[type=checkbox] {
     display: none;
     position: relative;
     z-index: 100;
+}
+@media (max-width: 768px) {
+    #sidebarMenu {
+     width: 100vw;
+     transform: translateX(100vw)   
+    }    
 }
