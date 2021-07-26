@@ -13,38 +13,59 @@ jQuery(document).ready(function ($) {
     shuffle(imageArray);
 
     // build scene
-    var scene_up = new ScrollMagic.Scene({
-            triggerElement: "#loader_up",
-            triggerHook: 0,
-            offset: "30px",
-            reverse: true
-        })
-        .addTo(controller)
-        .on("leave", function (e) {
-            createElement('up', true);
-            scene_up.update();
+    // var scene_up = new ScrollMagic.Scene({
+    //         triggerElement: "#loader_up",
+    //         triggerHook: 0,
+    //         offset: "30px",
+    //         reverse: true
+    //     })
+    //     .addTo(controller)
+    //     .on("leave", function (e) {
+    //         createElement('up', true);
+    //         scene_up.update();
             
-        })
-        .addIndicators();
+    //     })
+    //     .addIndicators();
 
     var scene_down = new ScrollMagic.Scene({
             triggerElement: "#loader_down",
-            triggerHook: "onEnter"
+            triggerHook: "onEnter",
+            offset: "-30px",
         })
         .addTo(controller)
         .on("enter", function (e) {
             createElement('down', true);
             scene_down.update();
             
-        })
-        .addIndicators();
+        });
+        //.addIndicators();
 
     // add some boxes to start with.
     addBoxes(8);
-    $('#pictures').on('scroll', function() {
-        if ($('#pictures').scrollTop() == 0) {
-            $('#pictures').scrollTop(50);
+    // $('#pictures').on('scroll', function() {
+    //     if ($('#pictures').scrollTop() == 0) {
+    //         $('#pictures').scrollTop(50);
+    //     }
+    // });
+
+    $('#pictures').on('click', '.image_element > video', function(e) {
+        console.log(e.target);
+        var videoElement = e.target;
+        if ($(videoElement).hasClass('active')) {
+            $(videoElement).removeAttr('controls')
+            $(videoElement).attr('muted', '');
+            videoElement.muted = 1;
+            $(videoElement).removeClass('active');
+        } else {
+            $(videoElement).removeAttr('muted')
+            $(videoElement).attr('controls', '');
+            $(videoElement).addClass('active');
+            videoElement.pause();
+            videoElement.currentTime = 0;
+            videoElement.muted = 0;
+            videoElement.load();
         }
+
     });
 
     //$(document).on('load', 'img', newPosition);
