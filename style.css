@@ -2,6 +2,9 @@ body {
     overflow: hidden;
 }
 
+body * {
+    border: #fbb67b 1px solid;
+}
 .pic_frame {
     position: fixed;
     top: 0;

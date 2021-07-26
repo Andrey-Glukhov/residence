@@ -42,11 +42,7 @@ jQuery(document).ready(function ($) {
 
     // add some boxes to start with.
     addBoxes(8);
-    // $('#pictures').on('scroll', function() {
-    //     if ($('#pictures').scrollTop() == 0) {
-    //         $('#pictures').scrollTop(50);
-    //     }
-    // });
+   
 
     $('#pictures').on('click', '.image_element > video', function(e) {
         console.log(e.target);
@@ -68,14 +64,7 @@ jQuery(document).ready(function ($) {
 
     });
 
-    //$(document).on('load', 'img', newPosition);
-    //$('.image_element').on('load', 'img', newPosition );
-    // document.addEventListener('load',function(e){
-    //     if(e.target && e.target.tagName == 'IMG'){
-    //           newPosition();
-    //      }
-    //  });
-        
+    
     // pseudo function to add new content. In real life it would be done through an ajax request.
     function addBoxes(amount) {
         for (i = 1; i <= amount; i++) {
@@ -95,7 +84,7 @@ jQuery(document).ready(function ($) {
                 newElement.insertAfter($('#loader_up'));
             } else if (direction === 'down') {
                 newElement.insertBefore($('#loader_down'));
-                // $('#pictures .image_element').first().remove();
+               
             }
             newElement.children('img').attr('src', imageArray[currentPic].dataset.link);
             newElement.children('img').attr('data-width', imageArray[currentPic].dataset.width)
@@ -113,51 +102,12 @@ jQuery(document).ready(function ($) {
         if (remove) {
             if (direction === 'up') {
                 $('#pictures .image_element').last().remove();
-               // console.log('---', newElement.height());
                 $('#pictures').scrollTop(newElement.outerHeight());
             } else if (direction === 'down') {
                 $('#pictures .image_element').first().remove();
             }
         }
-
-        // var picWrapper = document.querySelector('.pic_frame');
-        // var newElement = document.createElement('div');
-        // newElement.className = "image_element";
-        // var newImg;
-        // if (imageArray[currentPic].className.includes('image_item')) {
-        //     newImg = document.createElement('img');
-    
-        // } else {
-        //     newImg = document.createElement('video');
-        //     newImg.muted = true;
-        //     newImg.autoplay = true;
-        //     newImg.setAttribute('type', "video/mp4")
-    
-        // }
-        // newElement.append(newImg);
-        // newElement.style.position = "relative";
-        // newImg.src = imageArray[currentPic].dataset.link;
-        // var loader;
-        // if (direction === 'up') {
-        //     loader = document.querySelector('#loader_up');
-        //     loader.after(newElement);
-        //     //         newElement.insertAfter($('#loader_up'));
-        // } else if (direction === 'down') {
-        //     loader = document.querySelector('#loader_down');
-        //     loader.before(newElement);
-        //     //         newElement.insertBefore($('#loader_down'));
-        //     //         // $('#pictures .image_element').first().remove();
-        // }
-
-
-        
        
-        //setPosition(div);
-    
-        //div.append(newImg);
-        //return div;
-
-
         if (currentPic + 1 > imageArray.length - 1) {
             currentPic = 0
         } else {
@@ -180,13 +130,13 @@ jQuery(document).ready(function ($) {
                 if (aspectRatio < 1) {
                     element.css('width', newWidth + "%");
                     //element.css('height', (newWidth / aspectRatio) + "%");
-                    element.css('height', "auto");
+                    element.css('height', "fit-content");
                     element.find('img').css('width', '100%');
                     element.find('img').css('height', 'auto');
                 } else {
                     element.css('height', newWidth + "%");
                     //element.css('width', (newWidth * aspectRatio) + "%");
-                    element.css('width', "auto");
+                    element.css('width', "fit-content");
                     element.find('img').css('height', '100%');
                     element.find('img').css('width', 'auto');
                 }
@@ -203,16 +153,7 @@ jQuery(document).ready(function ($) {
 
     }
 
-    function newPosition() {
-        
-        console.log('this');
-        // const newWidth = getRandomInt(30, 80);
-        // element.css('position', 'relative');
-        // element.css('width', newWidth + "%");
-        // element.css('height', (newWidth * 9 / 16) + "%");
-        // element.css('left', getRandomInt(0, 100 - newWidth) + "%");
-
-    }
+   
 
     function getRandomInt(min, max) {
         min = Math.ceil(min);
